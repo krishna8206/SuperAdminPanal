@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useCallback } from "react"
 import { useLocation } from 'react-router-dom';
 import axios from "axios"
@@ -15,7 +16,7 @@ const api = axios.create({
 })
 
 export default function VehicleManagement() {
-    const location = useLocation();
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState("All")
   const [activeCategory, setActiveCategory] = useState("All")
   const [activeVehicleType, setActiveVehicleType] = useState("All")
