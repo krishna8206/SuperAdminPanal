@@ -383,7 +383,7 @@ export default function Dashboard() {
         const data = await response.json()
         setRecentRides(data)
       } catch (error) {
-        console.error("Error fetching recent rides:", error)
+        console.error("Error fetching recent trips:", error)
       }
     }
 
@@ -575,15 +575,15 @@ export default function Dashboard() {
 
   const updateRecentRides = useCallback((newRides) => {
     if (!Array.isArray(newRides)) {
-      console.warn("⚠️ Received invalid rides data:", newRides)
+      console.warn("⚠️ Received invalid trips data:", newRides)
       return
     }
 
     try {
       setRecentRides(newRides)
-      console.log("✅ Recent rides updated successfully")
+      console.log("✅ Recent trips updated successfully")
     } catch (error) {
-      console.error("❌ Error updating recent rides:", error)
+      console.error("❌ Error updating recent trips:", error)
     }
   }, []) // No dependencies
 
@@ -785,7 +785,7 @@ export default function Dashboard() {
 
     // Listen for real-time recent rides updates
     newSocket.on("recentRidesUpdate", (newRecentRides) => {
-      console.log("🚗 Received real-time recent rides update")
+      console.log("🚗 Received real-time recent trips update")
       updateRecentRides(newRecentRides)
     })
 
@@ -802,7 +802,7 @@ export default function Dashboard() {
     })
 
     newSocket.on("ridesError", (error) => {
-      console.error("🚗 Rides error:", error)
+      console.error("🚗 Trips error:", error)
       setErrors((prev) => ({ ...prev, rides: error.message }))
     })
 
@@ -837,7 +837,7 @@ export default function Dashboard() {
             return { data: DEFAULT_STATS }
           }),
           dashboardService.getRecentRides().catch((err) => {
-            console.error("Error fetching recent rides:", err)
+            console.error("Error fetching recent trips:", err)
             return { data: [] }
           }),
           dashboardService.getRevenueData().catch((err) => {
@@ -895,10 +895,10 @@ export default function Dashboard() {
   }, {})
 
   const serviceDistributionData = {
-    labels: ["Rides", "Food Delivery", "Courier Delivery"],
+    labels: ["Trips", "Food Delivery", "Courier Delivery"],
     datasets: [
       {
-        data: [serviceCounts["Ride"] || 0, serviceCounts["Food-Delivery"] || 0, serviceCounts["Courier-Delivery"] || 0],
+        data: [serviceCounts["Trip"] || 0, serviceCounts["Food-Delivery"] || 0, serviceCounts["Courier-Delivery"] || 0],
         backgroundColor: ["rgba(59, 130, 246, 0.7)", "rgba(249, 115, 22, 0.7)", "rgba(22, 163, 74, 0.7)"],
         borderColor: ["rgba(59, 130, 246, 1)", "rgba(249, 115, 22, 1)", "rgba(22, 163, 74, 1)"],
         borderWidth: 1,

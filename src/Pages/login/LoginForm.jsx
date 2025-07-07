@@ -245,7 +245,7 @@ export default function LoginInterface() {
                 <h1 className="text-4xl lg:text-5xl font-bold text-white mb-8 font-sans">
                   Fast, Easy & Secure
                   <br />
-                  <span className="text-green-400">Rides</span>
+                  <span className="text-green-400">Trips</span>
                 </h1>
 
                 <p className="text-xl text-gray-400 mb-8 font-sans">
@@ -253,7 +253,7 @@ export default function LoginInterface() {
                 </p>
 
                 <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                  {["🚗 Car Rides", "🛺 Auto Booking", "🏍️ Bike Rides", "📦 Porter Service"].map((item, i) => (
+                  {["🚗 Car Trips", "🛺 Auto Booking", "🏍️ Bike Trips", "📦 Porter Service"].map((item, i) => (
                     <motion.div
                       key={i}
                       className="bg-gray-800/80 backdrop-blur-sm rounded-xl px-4 py-2 shadow-sm cursor-pointer"
@@ -297,7 +297,7 @@ export default function LoginInterface() {
                   >
                     <div className="text-center mb-8">
                       <h2 className="text-3xl font-bold text-white mb-2 font-sans">Welcome Back!</h2>
-                      <p className="text-gray-400">Sign in to continue your ride journey</p>
+                      <p className="text-gray-400">Sign in to continue your trip journey</p>
                     </div>
 
                     <form onSubmit={sendOtp} className="space-y-6">

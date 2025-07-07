@@ -587,7 +587,7 @@ handleManualReconnect();
       case "Ride":
         return (
           <span className="px-2 py-1 text-xs rounded-full bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
-            Ride
+            Trip
           </span>
         )
       case "Food Delivery":
@@ -1185,7 +1185,7 @@ handleManualReconnect();
                       value={formData.category}
                       onChange={handleInputChange}
                     >
-                      <option value="Ride">Ride</option>
+                      <option value="Ride">Trip</option>
                       <option value="Food Delivery">Food Delivery</option>
                       <option value="Courier Delivery">Courier Delivery</option>
                     </select>

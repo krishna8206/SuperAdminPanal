@@ -381,7 +381,7 @@ export default function Dashboard() {
         const data = await response.json()
         setRecentRides(data)
       } catch (error) {
-        console.error("Error fetching recent rides:", error)
+        console.error("Error fetching recent trips:", error)
       }
     }
 
@@ -573,15 +573,15 @@ export default function Dashboard() {
 
   const updateRecentRides = useCallback((newRides) => {
     if (!Array.isArray(newRides)) {
-      console.warn("⚠️ Received invalid rides data:", newRides)
+      console.warn("⚠️ Received invalid trips data:", newRides)
       return
     }
 
     try {
       setRecentRides(newRides)
-      console.log("✅ Recent rides updated successfully")
+      console.log("✅ Recent trips updated successfully")
     } catch (error) {
-      console.error("❌ Error updating recent rides:", error)
+      console.error("❌ Error updating recent trips:", error)
     }
   }, []) // No dependencies
 
@@ -783,7 +783,7 @@ export default function Dashboard() {
 
     // Listen for real-time recent rides updates
     newSocket.on("recentRidesUpdate", (newRecentRides) => {
-      console.log("🚗 Received real-time recent rides update")
+      console.log("🚗 Received real-time recent trips update")
       updateRecentRides(newRecentRides)
     })
 
@@ -800,7 +800,7 @@ export default function Dashboard() {
     })
 
     newSocket.on("ridesError", (error) => {
-      console.error("🚗 Rides error:", error)
+      console.error("🚗 Trips error:", error)
       setErrors((prev) => ({ ...prev, rides: error.message }))
     })
 
@@ -835,7 +835,7 @@ export default function Dashboard() {
             return { data: DEFAULT_STATS }
           }),
           dashboardService.getRecentRides().catch((err) => {
-            console.error("Error fetching recent rides:", err)
+            console.error("Error fetching recent trips:", err)
             return { data: [] }
           }),
           dashboardService.getRevenueData().catch((err) => {
@@ -863,7 +863,7 @@ export default function Dashboard() {
 
   const getServiceIcon = (service) => {
     switch (service) {
-      case "Ride":
+      case "Trip":
         return <FaCar className="text-blue-500" />
       case "Food-Delivery":
         return <RiRestaurantFill className="text-orange-500" />
@@ -893,10 +893,10 @@ export default function Dashboard() {
   }, {})
 
   const serviceDistributionData = {
-    labels: ["Rides", "Food Delivery", "Courier Delivery"],
+    labels: ["Trips", "Food Delivery", "Courier Delivery"],
     datasets: [
       {
-        data: [serviceCounts["Ride"] || 0, serviceCounts["Food-Delivery"] || 0, serviceCounts["Courier-Delivery"] || 0],
+        data: [serviceCounts["Trip"] || 0, serviceCounts["Food-Delivery"] || 0, serviceCounts["Courier-Delivery"] || 0],
         backgroundColor: ["rgba(59, 130, 246, 0.7)", "rgba(249, 115, 22, 0.7)", "rgba(22, 163, 74, 0.7)"],
         borderColor: ["rgba(59, 130, 246, 1)", "rgba(249, 115, 22, 1)", "rgba(22, 163, 74, 1)"],
         borderWidth: 1,
@@ -953,7 +953,7 @@ export default function Dashboard() {
                     Live Vehicle Tracking - Ahmedabad
                   </h2>
                   <p className="text-xs text-gray-600 dark:text-gray-400 mt-1">
-                    Real-time locations of active rides and deliveries across Ahmedabad
+                    Real-time locations of active trips and deliveries across Ahmedabad
                   </p>
                 </div>
 
@@ -1712,7 +1712,7 @@ export default function Dashboard() {
                 <h4 className="text-sm font-semibold text-gray-800 dark:text-white mb-2">This Week vs Last Week</h4>
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-gray-600 dark:text-gray-400">Rides</span>
+                    <span className="text-xs text-gray-600 dark:text-gray-400">Trips</span>
                     <div className="flex items-center gap-2">
                       <span className="text-sm font-medium text-gray-800 dark:text-white">
                         {summaryStats.thisWeekVsLastWeek.thisWeek.rides}
