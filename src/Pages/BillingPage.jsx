@@ -22,7 +22,7 @@ import autoTable from "jspdf-autotable"
 import { useBillingSocket } from "../hooks/useSocket"
 
 // API base URL
-const API_BASE_URL = "https://panalsbackend-production.up.railway.app/api"
+const API_BASE_URL = "https://panalsbackend.onrender.com/api"
 
 export default function BillingPage() {
   // State for invoices data
@@ -443,7 +443,7 @@ export default function BillingPage() {
                 <input
                   type="text"
                   placeholder="Search invoices..."
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white focus:border-white"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                 />
@@ -471,7 +471,7 @@ export default function BillingPage() {
                   startDate={dateFilter.startDate}
                   endDate={dateFilter.endDate}
                   placeholderText="Start Date"
-                  className="border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                  className="border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-white"
                 />
                 <span className="text-gray-500 dark:text-gray-400">to</span>
                 <DatePicker
@@ -482,13 +482,13 @@ export default function BillingPage() {
                   endDate={dateFilter.endDate}
                   minDate={dateFilter.startDate}
                   placeholderText="End Date"
-                  className="border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                  className="border border-gray-300 dark:border-gray-600 rounded-md px-3 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-white"
                 />
               </div>
 
               <button
                 onClick={handleNewInvoice}
-                className="flex items-center px-4 py-2 rounded-md bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                className="flex items-center px-4 py-2 rounded-md bg-orange-600 hover:bg-orange-700 text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
               >
                 <FiPlus className="mr-2" />
                 New Invoice
@@ -581,7 +581,7 @@ export default function BillingPage() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <div className="flex-shrink-0 h-8 w-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-medium">
+                            <div className="flex-shrink-0 h-8 w-8 rounded-full bg-orange-600 flex items-center justify-center text-white font-medium">
                               {invoice.customerName.charAt(0)}
                             </div>
                             <div className="ml-4">
@@ -694,7 +694,7 @@ export default function BillingPage() {
                             onClick={() => setCurrentPage(pageNum)}
                             className={`relative inline-flex items-center px-4 py-2 border text-sm font-medium ${
                               currentPage === pageNum
-                                ? "z-10 bg-green-50 dark:bg-green-900 border-green-500 text-green-600 dark:text-green-300"
+                                ? "z-10 bg-orange-600 border-white text-white"
                                 : "bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600"
                             }`}
                           >
@@ -861,7 +861,7 @@ export default function BillingPage() {
                     type="button"
                     onClick={handleSaveInvoice}
                     disabled={isSubmitting}
-                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-base font-medium text-white hover:from-green-600 hover:to-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm disabled:opacity-50"
+                    className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white sm:ml-3 sm:w-auto sm:text-sm disabled:opacity-50"
                   >
                     {isSubmitting ? "Saving..." : isEditing ? "Update" : "Create"} Invoice
                   </button>

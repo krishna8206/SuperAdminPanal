@@ -579,7 +579,7 @@ export default function UserManagement() {
   // Render loading state
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 flex items-center justify-center">
+      <div className="min-h-screen bg-black text-white p-6 flex items-center justify-center">
         <div className="text-gray-900 dark:text-white">Loading users...</div>
       </div>
     );
@@ -588,14 +588,14 @@ export default function UserManagement() {
   // Render error state
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 flex items-center justify-center">
+      <div className="min-h-screen bg-black text-white p-6 flex items-center justify-center">
         <div className="text-red-500">Error loading users: {error}</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6">
+    <div className="min-h-screen bg-black text-white p-6">
       {/* Toast Notifications */}
       <div className="fixed bottom-4 right-4 z-50 space-y-2">
         {toasts.map((toast) => (
@@ -625,7 +625,7 @@ export default function UserManagement() {
             <p className="text-gray-600 dark:text-gray-400 mt-1">Manage all registered users</p>
           </div>
           <Button 
-            variant="success"
+            className={"bg-orange-600 hover:bg-orange-700"}
             onClick={() => setShowAddUserDialog(true)}
             icon={<Plus className="h-4 w-4" />}
           >
@@ -1091,7 +1091,7 @@ export default function UserManagement() {
                 </Button>
                 <Button
                   type="submit"
-                  variant="success"
+                  className={"bg-orange-600 hover:bg-orange-700"}
                 >
                   Add User
                 </Button>

@@ -63,7 +63,7 @@ export default function Layout() {
     setError("");
 
     try {
-      const response = await axios.post("https://idharudhar-backend-2.onrender.com/api/auth/send-otp", {
+      const response = await axios.post("https://idharudhar-backend-2.onrender.com/api/auth/login", {
         email,
       });
 
@@ -124,7 +124,7 @@ export default function Layout() {
     setError("");
 
     try {
-      await axios.post("https://idharudhar-backend-2.onrender.com/api/auth/send-otp", { email });
+      await axios.post("https://idharudhar-backend-2.onrender.com/api/auth/login", { email });
 
       const expiryTime = new Date();
       expiryTime.setMinutes(expiryTime.getMinutes() + 5);
@@ -163,17 +163,17 @@ export default function Layout() {
         <div data-aos="fade-up" className="min-h-screen bg-[#0B1120] text-white flex items-center justify-center px-4">
           <div className="max-w-5xl w-[900px] bg-[#111827] rounded-2xl shadow-2xl grid md:grid-cols-2 overflow-hidden">
             <div className="p-10 flex flex-col justify-center relative min-h-[70vh]">
-              <Car className="absolute top-10 left-10 opacity-10 text-green-500 text-7xl" />
-              <Bike className="absolute top-24 left-32 opacity-10 text-green-500 text-6xl" />
-              <Truck className="absolute bottom-10 left-16 opacity-10 text-green-500 text-6xl" />
-              <MapPin className="absolute top-1/2 right-10 opacity-10 text-green-500 text-6xl" />
-              <Navigation className="absolute top-[30%] left-[65%] opacity-10 text-green-500 text-5xl" />
-              <LocateFixed className="absolute bottom-20 right-20 opacity-10 text-green-500 text-5xl" />
+              <Car className="absolute top-10 left-10 opacity-10 text-orange text-7xl" />
+              <Bike className="absolute top-24 left-32 opacity-10 text-orange text-6xl" />
+              <Truck className="absolute bottom-10 left-16 opacity-10 text-orange text-6xl" />
+              <MapPin className="absolute top-1/2 right-10 opacity-10 text-orange text-6xl" />
+              <Navigation className="absolute top-[30%] left-[65%] opacity-10 text-orange text-5xl" />
+              <LocateFixed className="absolute bottom-20 right-20 opacity-10 text-orange text-5xl" />
               <div className="absolute top-[25%] left-[15%] w-24 h-24 rounded-full bg-green-500 opacity-5 blur-2xl" />
               <div className="absolute bottom-[20%] right-[10%] w-32 h-32 rounded-full bg-green-500 opacity-5 blur-2xl" />
               <h1 className="text-5xl font-bold mb-4 leading-tight z-10">
                 Fast, Easy & <br />
-                <span className="text-green-400">Secure Rides</span>
+                <span className="text-orange-600">Secure Rides</span>
               </h1>
               <p className="text-gray-400 text-lg mb-6 z-10">
                 Car, Auto, Bike & Porter services – all in one place.
@@ -204,7 +204,7 @@ export default function Layout() {
                   </div>
                   {emailError && <p className="text-red-500 text-sm -mt-3 mb-2">{emailError}</p>}
                   <button
-                    className="bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg font-medium transition flex items-center justify-center gap-2"
+                    className="bg-orange-600 hover:bg-orange-700 text-white py-2 rounded-lg font-medium transition flex items-center justify-center gap-2"
                     onClick={sendOtp}
                     disabled={isLoginLoading}
                   >
@@ -223,7 +223,7 @@ export default function Layout() {
                   </button>
 
                   <div className="text-center mb-6">
-                    <div className="w-16 h-16 bg-green-700/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
                       <Mail className="w-8 h-8 text-green-400" />
                     </div>
                     <h2 className="text-2xl font-semibold mb-2">Check Your Email</h2>
@@ -269,7 +269,7 @@ export default function Layout() {
                     <button
                       type="submit"
                       disabled={isLoginLoading || otp.some((d) => d === "")}
-                      className="bg-green-500 hover:bg-green-600 text-white py-2 rounded-lg w-full mt-4"
+                      className="bg-orange-600 hover:bg-orange-700 text-white py-2 rounded-lg w-full mt-4"
                     >
                       {isLoginLoading ? "Verifying..." : "Verify & Continue"}
                     </button>

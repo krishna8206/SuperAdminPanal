@@ -153,7 +153,7 @@ const permissionCategories = [
   { name: "settings", label: "System Settings", icon: <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg> },
 ]
 
-const API_BASE_URL = "https://panalsbackend-production.up.railway.app/api"
+const API_BASE_URL = "https://panalsbackend.onrender.com/api"
 
 export default function AdminManagement() {
   const [admins, setAdmins] = useState([])
@@ -543,7 +543,7 @@ export default function AdminManagement() {
   }
 
   return (
-    <div className="p-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div className="p-6 bg-black text-white min-h-screen">
       <canvas ref={canvasRef} style={{ display: "none" }} />
       <div className="max-w-7xl mx-auto space-y-6">
         {notifications.map((n) => (
@@ -585,7 +585,7 @@ export default function AdminManagement() {
         {/* Header and Search */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400">
+            <div className="p-2 rounded-lg bg-orange-900/50 text-orange-600 ">
               <UserShield className="w-6 h-6" />
             </div>
             <h1 className="text-2xl font-bold text-gray-800 dark:text-white">Admin Management</h1>
@@ -605,7 +605,7 @@ export default function AdminManagement() {
             </div>
             <button
               onClick={() => { resetForm(); setShowAddModal(true); }}
-              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
             >
               <Plus className="w-4 h-4" />
               Add Admin
@@ -813,12 +813,12 @@ export default function AdminManagement() {
                         name="selfie"
                         accept="image/*"
                         onChange={(e) => setAdminSelfie(e.target.files[0])}
-                        className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 dark:file:bg-blue-900/50 dark:file:text-blue-300 dark:hover:file:bg-blue-900 transition-colors"
+                        className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-orange-600 file:text-white hover:file:bg-orange-700 dark:file:bg-orange-900/50 dark:file:text-white dark:hover:file:bg-orange-700 transition-colors"
                       />
                       <button
                         type="button"
                         onClick={() => setShowCamera(true)}
-                        className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                        className="p-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
                       >
                         <Camera className="w-5 h-5" />
                       </button>
@@ -900,7 +900,7 @@ export default function AdminManagement() {
                   <button
                     onClick={handleAddAdmin}
                     disabled={isSubmitting}
-                    className={`px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
+                    className={`px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-2">

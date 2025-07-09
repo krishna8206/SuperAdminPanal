@@ -363,7 +363,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchDrivers = async () => {
       try {
-        const response = await fetch("https://panalsbackend-production.up.railway.app/api/driver")
+        const response = await fetch("https://panalsbackend.onrender.com/api/driver")
         const data = await response.json()
         if (data.success) {
           setDrivers(data.data)
@@ -379,7 +379,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchRecentRides = async () => {
       try {
-        const response = await fetch("https://panalsbackend-production.up.railway.app/api/dashboard/recent-rides")
+        const response = await fetch("https://panalsbackend.onrender.com/api/dashboard/recent-rides")
         const data = await response.json()
         setRecentRides(data)
       } catch (error) {
@@ -738,7 +738,7 @@ export default function Dashboard() {
     }
 
     console.log("Initializing socket connection...")
-    const newSocket = io("https://panalsbackend-production.up.railway.app", {
+    const newSocket = io("https://panalsbackend.onrender.com", {
       timeout: 20000,
       reconnection: true,
       reconnectionDelay: 1000,
@@ -912,7 +912,7 @@ export default function Dashboard() {
   }, [activeTab])
 
   return (
-    <div className="min-h-screen w-full bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen w-full bg-black text-white transition-colors duration-300">
       {/* Dashboard Content */}
       <div className="p-4 md:p-6">
         {/* <div className="flex justify-between items-center mb-4 md:mb-6">
@@ -1096,7 +1096,7 @@ export default function Dashboard() {
                 <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Active Drivers</h3>
                 <div className="flex items-center space-x-2">
                   <div className="w-2 h-2 bg-green-500 dark:bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-green-500 dark:text-green-400 text-sm">
+                  <span className="text-white text-sm">
                     {filteredDrivers.filter((d) => d.status === "active" || d.status === "idle").length} Active
                   </span>
                 </div>
@@ -1108,7 +1108,7 @@ export default function Dashboard() {
                     key={driver._id}
                     className={`p-4 rounded-lg border cursor-pointer transition-all duration-200 ${
                       selectedDriver?._id === driver._id
-                        ? "border-green-500 dark:border-green-400 bg-green-50 dark:bg-green-400/10"
+                        ? "border-white bg-black0"
                         : "border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500"
                     }`}
                     onClick={() => handleDriverSelect(driver)}
@@ -1157,7 +1157,7 @@ export default function Dashboard() {
                           e.stopPropagation()
                           setMapCenter([driver.location.lat, driver.location.lng])
                         }}
-                        className="flex-1 bg-green-600 hover:bg-green-700 dark:bg-green-700 dark:hover:bg-green-600 text-white py-1 px-3 rounded text-xs transition-colors"
+                        className="flex-1 bg-orange-600 hover:bg-orange-700 text-white py-1 px-3 rounded text-xs transition-colors"
                       >
                         Track
                       </button>
@@ -1181,7 +1181,7 @@ export default function Dashboard() {
           <div className="mt-6 grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
               <div className="flex items-center space-x-2">
-                <FaCar className="w-5 h-5 text-green-500 dark:text-green-400" />
+                <FaCar className="w-5 h-5 text-orange-600 " />
                 <div>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">Active Trips</p>
                   <p className="text-gray-800 dark:text-white text-xl font-bold">
@@ -1193,7 +1193,7 @@ export default function Dashboard() {
 
             <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
               <div className="flex items-center space-x-2">
-                <FaUserAlt className="w-5 h-5 text-green-500 dark:text-green-400" />
+                <FaUserAlt className="w-5 h-5 text-orange-600" />
                 <div>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">Total Drivers</p>
                   <p className="text-gray-800 dark:text-white text-xl font-bold">{drivers.length}</p>
@@ -1203,7 +1203,7 @@ export default function Dashboard() {
 
             <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
               <div className="flex items-center space-x-2">
-                <FaChartLine className="w-5 h-5 text-green-500 dark:text-green-400" />
+                <FaChartLine className="w-5 h-5 text-orange-600" />
                 <div>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">Avg Rating</p>
                   <p className="text-gray-800 dark:text-white text-xl font-bold">
@@ -1217,7 +1217,7 @@ export default function Dashboard() {
 
             <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
               <div className="flex items-center space-x-2">
-                <FaTruck className="w-5 h-5 text-green-500 dark:text-green-400" />
+                <FaTruck className="w-5 h-5 text-orange-600" />
                 <div>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">Coverage Area</p>
                   <p className="text-gray-800 dark:text-white text-xl font-bold">25 km</p>

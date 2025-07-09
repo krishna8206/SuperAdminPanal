@@ -24,8 +24,8 @@ export function AnimatedVehicle({ type, startPosition, delay }) {
       }}
       style={{ left: `${startPosition-160}px` }}
     >
-      <div className="p-2 bg-green-700/20 rounded-full shadow-lg">
-        <Icon className="w-6 h-6 text-green-400" />
+      <div className="p-2 bg-orange-600 rounded-full shadow-lg">
+        <Icon className="w-6 h-6 text-white" />
       </div>
     </motion.div>
   )

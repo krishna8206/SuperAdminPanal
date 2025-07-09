@@ -26,7 +26,7 @@ export function AnimatedRoad() {
           </motion.div> */}
           <div className="absolute top-1/2 left-0 right-0 h-1 flex">
           {Array.from({ length: 20 }).map((_, i) => (
-              <div key={i} className="w-10 h-1 bg-green-400/70 mr-6" />
+              <div key={i} className="w-10 h-1 bg-orange-600 mr-6" />
             ))}
           </div>
         </div>

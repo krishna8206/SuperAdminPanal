@@ -34,8 +34,8 @@ import {
 import axios from "axios"
 
 // API Base URLs
-const API_BASE_URL = "https://panalsbackend-production.up.railway.app/api/driver"
-const ADMIN_API_URL = "https://panalsbackend-production.up.railway.app/api/admins"
+const API_BASE_URL = "https://panalsbackend.onrender.com/api/driver"
+const ADMIN_API_URL = "https://panalsbackend.onrender.com/api/admins"
 
 export default function DriverManagementDashboard() {
   // Existing States
@@ -683,7 +683,7 @@ export default function DriverManagementDashboard() {
   }
 
   const getDriverAvatar = (name) => {
-    return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=10b981&color=fff&size=40`
+    return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=dd6b20&color=fff&size=40`
   }
 
   const primaryDrivers = drivers.filter((d) => d.driverType === "Primary")
@@ -722,13 +722,13 @@ export default function DriverManagementDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+    <div className="min-h-screen bg-black text-white">
       <canvas ref={canvasRef} style={{ display: "none" }} />
 
       <div className="container mx-auto px-4 py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent mb-2">
+          <h1 className="text-4xl font-bold text-white mb-2">
             Driver Management Dashboard
           </h1>
           <p className="text-gray-600 dark:text-gray-400 text-lg">
@@ -861,7 +861,7 @@ export default function DriverManagementDashboard() {
         <div className="flex flex-wrap gap-4 mb-8">
           <button
             onClick={() => openModal("onboard")}
-            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 px-8 py-4 rounded-xl flex items-center font-semibold text-white shadow-lg transform hover:scale-105 transition-all duration-200"
+            className="bg-orange-600 hover:bg-orange-700 px-8 py-4 rounded-xl flex items-center font-semibold text-white shadow-lg transform hover:scale-105 transition-all duration-200"
             disabled={isLoading}
           >
             <Plus className="w-5 h-5 mr-3" />
@@ -872,7 +872,7 @@ export default function DriverManagementDashboard() {
           <button
             onClick={downloadCSV}
             disabled={isDownloading || drivers.length === 0}
-            className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 px-8 py-4 rounded-xl flex items-center font-semibold text-white shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+            className="bg-orange-600 hover:bg-orange-700 px-8 py-4 rounded-xl flex items-center font-semibold text-white shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
           >
             {isDownloading ? (
               <>
@@ -1288,7 +1288,7 @@ export default function DriverManagementDashboard() {
                     <div className="flex justify-end gap-4 pt-6 border-t border-gray-200 dark:border-gray-700">
                       <button
                         onClick={() => openModal("manage", selectedDriver)}
-                        className="px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-medium hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105"
+                        className="px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-xl font-medium transition-all transform hover:scale-105"
                       >
                         Edit Driver
                       </button>
@@ -1477,13 +1477,13 @@ export default function DriverManagementDashboard() {
                     {/* Driver Type Selection */}
                     <div className="grid grid-cols-2 gap-4">
                       <button
-                        className={`p-4 rounded-lg text-center font-semibold ${formData.driverType === "Primary" ? "bg-green-600 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
+                        className={`p-4 rounded-lg text-center font-semibold ${formData.driverType === "Primary" ? "bg-orange-600 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
                         onClick={() => setFormData({ ...formData, driverType: "Primary" })}
                       >
                         Primary Driver
                       </button>
                       <button
-                        className={`p-4 rounded-lg text-center font-semibold ${formData.driverType === "Sub-driver" ? "bg-green-600 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
+                        className={`p-4 rounded-lg text-center font-semibold ${formData.driverType === "Sub-driver" ? "bg-orange-600 text-white" : "bg-gray-200 dark:bg-gray-700"}`}
                         onClick={() => setFormData({ ...formData, driverType: "Sub-driver" })}
                       >
                         Sub-driver
@@ -1649,7 +1649,7 @@ export default function DriverManagementDashboard() {
                               setSelfieFor("onboard")
                               setShowCamera(true)
                             }}
-                            className="mt-2 px-3 py-1 bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-300 rounded text-xs hover:bg-green-200 dark:hover:bg-green-800 transition-colors"
+                            className="mt-2 px-3 py-1 bg-orange-600 hover:bg-orange-700 text-white rounded text-xs hover:bg-green-200 dark:hover:bg-green-800transition-colors"
                           >
                             Take Photo
                           </button>
@@ -1793,7 +1793,7 @@ export default function DriverManagementDashboard() {
                         ))}
                         <button
                           onClick={handleAddSubDriver}
-                          className="mt-2 p-2 bg-green-500 text-white rounded flex items-center"
+                          className="mt-2 p-2 bg-orange-600 hover:bg-orange-700 text-white rounded flex items-center"
                         >
                           <UserPlus className="w-4 h-4 mr-1" /> Add Sub-driver
                         </button>
@@ -1810,7 +1810,7 @@ export default function DriverManagementDashboard() {
                       <button
                         onClick={handleConfirm}
                         disabled={isLoading}
-                        className="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-xl font-medium hover:from-green-600 hover:to-green-700 disabled:opacity-50"
+                        className="px-8 py-3 bg-orange-600 hover:bg-orange-700 text-white rounded-xl font-medium  disabled:opacity-50"
                       >
                         {isLoading ? "Saving..." : "Save Driver"}
                       </button>
@@ -1879,7 +1879,7 @@ export default function DriverManagementDashboard() {
                       <button
                         onClick={handleUpdate}
                         disabled={isLoading}
-                        className="px-8 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 disabled:opacity-50"
+                        className="px-8 py-3 bg-orange-600 text-white rounded-xl font-medium hover:bg-orange-700 disabled:opacity-50"
                       >
                         {isLoading ? "Updating..." : "Update Driver"}
                       </button>

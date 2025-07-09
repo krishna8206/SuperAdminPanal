@@ -103,7 +103,7 @@ const EmptyChartState = ({ message = "No real data available" }) => (
 const CustomDateInput = ({ value, onClick }) => (
   <button
     onClick={onClick}
-    className="flex items-center justify-between w-full px-3 py-2 text-sm text-left bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-green-500 focus:border-green-500"
+    className="flex items-center justify-between w-full px-3 py-2 text-sm text-left bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-white focus:border-white"
   >
     <span className="text-gray-700 dark:text-gray-200">{value}</span>
     <FiCalendar className="text-gray-400 dark:text-gray-300" />
@@ -267,15 +267,15 @@ export default function ReportsEarning() {
       })
 
       const [summaryResponse, earningsResponse, driverResponse] = await Promise.all([
-        fetch(`https://panalsbackend-production.up.railway.app/api/reports/summary?${params}`).catch((e) => {
+        fetch(`https://panalsbackend.onrender.com/api/reports/summary?${params}`).catch((e) => {
           console.error("Summary API error:", e)
           return null
         }),
-        fetch(`https://panalsbackend-production.up.railway.app/api/reports/earnings?${params}`).catch((e) => {
+        fetch(`https://panalsbackend.onrender.com/api/reports/earnings?${params}`).catch((e) => {
           console.error("Earnings API error:", e)
           return null
         }),
-        fetch(`https://panalsbackend-production.up.railway.app/api/reports/driver-performance?${params}`).catch((e) => {
+        fetch(`https://panalsbackend.onrender.com/api/reports/driver-performance?${params}`).catch((e) => {
           console.error("Driver API error:", e)
           return null
         }),
@@ -329,7 +329,7 @@ export default function ReportsEarning() {
 
     console.log("🔌 Initializing Socket.IO connection...")
 
-    const newSocket = io("https://panalsbackend-production.up.railway.app", {
+    const newSocket = io("https://panalsbackend.onrender.com", {
       transports: ["websocket", "polling"],
       timeout: 20000,
       reconnection: true,
@@ -556,13 +556,13 @@ export default function ReportsEarning() {
   }
 
   const getChangeIcon = (value) => {
-    if (value > 0) return <FiTrendingUp className="text-green-500 mr-1" />
+    if (value > 0) return <FiTrendingUp className="text-orange-600 mr-1" />
     if (value < 0) return <FiTrendingDown className="text-red-500 mr-1" />
     return <FiTrendingUp className="text-gray-500 mr-1" />
   }
 
   const getChangeColor = (value) => {
-    if (value > 0) return "text-green-500"
+    if (value > 0) return "text-orange-600"
     if (value < 0) return "text-red-500"
     return "text-gray-500"
   }
@@ -570,7 +570,7 @@ export default function ReportsEarning() {
   const getDataSourceIcon = () => {
     switch (dataSource) {
       case "socket":
-        return <FiWifi className="w-4 h-4 text-green-500" />
+        return <FiWifi className="w-4 h-4 text-orange-600" />
       case "api":
         return <FiDatabase className="w-4 h-4 text-blue-500" />
       case "cached":
@@ -609,7 +609,7 @@ export default function ReportsEarning() {
   }
 
   return (
-    <div className="p-4 md:p-6 bg-gray-50 dark:bg-gray-900 min-h-screen">
+    <div className="p-4 md:p-6 bg-black text-white min-h-screen">
       <style jsx global>{`
         .react-datepicker {
           font-family: 'Inter', sans-serif;
@@ -681,7 +681,7 @@ export default function ReportsEarning() {
         .react-datepicker__year-text--selected,
         .react-datepicker__year-text--in-selecting-range,
         .react-datepicker__year-text--in-range {
-          background-color: #10b981;
+          background-color: orange;
           color: white;
         }
 
@@ -697,14 +697,14 @@ export default function ReportsEarning() {
         .react-datepicker__year-text--selected:hover,
         .react-datepicker__year-text--in-selecting-range:hover,
         .react-datepicker__year-text--in-range:hover {
-          background-color: #059669;
+          background-color: orange;
         }
 
         .react-datepicker__day--keyboard-selected,
         .react-datepicker__month-text--keyboard-selected,
         .react-datepicker__quarter-text--keyboard-selected,
         .react-datepicker__year-text--keyboard-selected {
-          background-color: #10b981;
+          background-color: orange;
           color: white;
         }
 
@@ -712,7 +712,7 @@ export default function ReportsEarning() {
         .react-datepicker__month-text--keyboard-selected:hover,
         .react-datepicker__quarter-text--keyboard-selected:hover,
         .react-datepicker__year-text--keyboard-selected:hover {
-          background-color: #059669;
+          background-color: orange;
         }
 
         .react-datepicker__day--disabled,
@@ -759,7 +759,7 @@ export default function ReportsEarning() {
         }
 
         .react-datepicker__navigation:hover *::before {
-          border-color: #10b981;
+          border-color: white;
         }
       `}</style>
 
@@ -776,7 +776,7 @@ export default function ReportsEarning() {
               {getDataSourceIcon()}
               <div
                 className={`w-3 h-3 rounded-full ${connectionStatus === "connected"
-                  ? "bg-green-500"
+                  ? "bg-orange-600"
                   : connectionStatus === "connecting"
                     ? "bg-yellow-500 animate-pulse"
                     : "bg-red-500"
@@ -802,7 +802,7 @@ export default function ReportsEarning() {
               <button
                 onClick={() => handleTimeRangeChange("day")}
                 className={`px-3 py-1 rounded-md text-sm ${timeRange === "day"
-                  ? "bg-gradient-to-r from-green-500 to-green-600 text-white"
+                  ? "bg-orange-600 text-white hover:bg-orange-700"
                   : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
                   }`}
               >
@@ -811,7 +811,7 @@ export default function ReportsEarning() {
               <button
                 onClick={() => handleTimeRangeChange("week")}
                 className={`px-3 py-1 rounded-md text-sm ${timeRange === "week"
-                  ? "bg-gradient-to-r from-green-500 to-green-600 text-white"
+                  ? "bg-orange-600 text-white hover:bg-orange-700"
                   : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
                   }`}
               >
@@ -820,7 +820,7 @@ export default function ReportsEarning() {
               <button
                 onClick={() => handleTimeRangeChange("month")}
                 className={`px-3 py-1 rounded-md text-sm ${timeRange === "month"
-                  ? "bg-gradient-to-r from-green-500 to-green-600 text-white"
+                  ? "bg-orange-600 text-white hover:bg-orange-700"
                   : "bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300"
                   }`}
               >
@@ -880,7 +880,7 @@ export default function ReportsEarning() {
 
                   <button
                     onClick={handleExport}
-                    className="flex items-center px-3 py-1 rounded-md bg-gradient-to-r from-green-500 to-green-600 text-white text-sm hover:from-green-600 hover:to-green-700"
+                    className="flex items-center px-3 py-1 rounded-md bg-orange-600 text-white text-sm hover:bg-orange-700"
                     disabled={!hasData}
                   >
                     <FiDownload className="mr-1" /> Export
@@ -896,7 +896,7 @@ export default function ReportsEarning() {
           <button
             onClick={() => handleTabChange("earnings")}
             className={`px-4 py-2 font-medium ${activeTab === "earnings"
-              ? "text-green-500 border-b-2 border-green-500"
+              ? "text-orange-600 border-b-2 border-orange-600"
               : "text-gray-500 dark:text-gray-400"
               }`}
           >
@@ -904,7 +904,7 @@ export default function ReportsEarning() {
           </button>
           <button
             onClick={() => handleTabChange("rides")}
-            className={`px-4 py-2 font-medium ${activeTab === "rides" ? "text-green-500 border-b-2 border-green-500" : "text-gray-500 dark:text-gray-400"
+            className={`px-4 py-2 font-medium ${activeTab === "rides" ? "text-orange-600 border-b-2 border-orange-600" : "text-gray-500 dark:text-gray-400"
               }`}
           >
             Trips
@@ -912,7 +912,7 @@ export default function ReportsEarning() {
           <button
             onClick={() => handleTabChange("drivers")}
             className={`px-4 py-2 font-medium ${activeTab === "drivers"
-              ? "text-green-500 border-b-2 border-green-500"
+              ? "text-orange-600 border-b-2 border-orange-600"
               : "text-gray-500 dark:text-gray-400"
               }`}
           >
@@ -939,10 +939,7 @@ export default function ReportsEarning() {
                       {formatCurrency(summaryData.totalEarnings)}
                     </p>
                   </div>
-                  {/* <div className="p-2 rounded-full bg-green-100 dark:bg-green-900">
-                    <span className="text-lg font-bold text-green-500 dark:text-green-300">₹</span>
-                  </div> */}
-                  <div className="p-2 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                  <div className="p-2 rounded-full bg-orange-100 dark:bg-orange-900 flex items-center justify-center">
                     <svg
                       width="24"
                       height="24"
@@ -1079,7 +1076,7 @@ export default function ReportsEarning() {
                       ({summaryData.discountPercentage}% of earnings)
                     </p>
                   </div>
-                 <div className="p-2 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+                 <div className="p-2 rounded-full bg-orange-100 dark:bg-orange-900 flex items-center justify-center">
                     <svg
                       width="24"
                       height="24"
@@ -1230,8 +1227,8 @@ export default function ReportsEarning() {
                         <AreaChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                           <defs>
                             <linearGradient id="colorEarnings" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#10B981" stopOpacity={0.8} />
-                              <stop offset="95%" stopColor="#10B981" stopOpacity={0} />
+                              <stop offset="5%" stopColor="#EA580C" stopOpacity={0.8} />
+                              <stop offset="95%" stopColor="#EA580C" stopOpacity={0} />
                             </linearGradient>
                           </defs>
                           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#eee" strokeOpacity={0.1} />
@@ -1249,7 +1246,7 @@ export default function ReportsEarning() {
                           <Area
                             type="monotone"
                             dataKey="earnings"
-                            stroke="#10B981"
+                            stroke="#EA580C"
                             strokeWidth={2}
                             fillOpacity={1}
                             fill="url(#colorEarnings)"
@@ -1275,7 +1272,7 @@ export default function ReportsEarning() {
                             <XAxis dataKey="name" />
                             <YAxis />
                             <Tooltip formatter={(value) => [`₹${value}`, "Earnings"]} />
-                            <Bar dataKey="earnings" fill="#3B82F6" radius={[4, 4, 0, 0]} />
+                            <Bar dataKey="earnings" fill="#EA580C" radius={[4, 4, 0, 0]} />
                           </BarChart>
                         </ResponsiveContainer>
                       ) : (
@@ -1305,7 +1302,7 @@ export default function ReportsEarning() {
                               yAxisId="left"
                               type="monotone"
                               dataKey="earnings"
-                              stroke="#3B82F6"
+                              stroke="#EA580C"
                               strokeWidth={2}
                               dot={false}
                               name="Earnings"

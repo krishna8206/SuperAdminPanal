@@ -241,21 +241,7 @@ export default function MainSideBar({ isOpen, onToggle, logout }) {
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="border-t border-gray-800 bg-[#050505] p-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
-                <User className="h-4 w-4 text-white" />
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-medium text-white truncate">Admin User</p>
-                <p className="text-xs text-gray-400 truncate">Super Admin</p>
-              </div>
-              <button onClick={logout} className="text-gray-400 hover:text-red-400">
-                <LogOut className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
+         
         </div>
       </div>
 

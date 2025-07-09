@@ -13,26 +13,26 @@ import useRideWebSocket from "../useRideWebSocket/useRideWebSocket";
 // Mock API functions
 const api = {
   getRides: async (status) => {
-    const res = await axios.get("https://panalsbackend-production.up.railway.app/api/rides", {
+    const res = await axios.get("https://panalsbackend.onrender.com/api/rides", {
       params: status ? { status } : {},
     });
     return res.data;
   },
 
   postRide: async (rideData) => {
-    const res = await axios.post("https://panalsbackend-production.up.railway.app/api/rides", rideData);
+    const res = await axios.post("https://panalsbackend.onrender.com/api/rides", rideData);
     return res.data;
   },
 
   // ✅ Add this function for status update
   updateRideStatus: async (rideId, status) => {
-    const res = await axios.put(`https://panalsbackend-production.up.railway.app/api/rides/${rideId}/status`, { status });
+    const res = await axios.put(`https://panalsbackend.onrender.com/api/rides/${rideId}/status`, { status });
     return res.data;
   },
 
   // ✅ Add this if you're calling getRideLogs (optional, based on your UI)
   getRideLogs: async (rideId) => {
-    const res = await axios.get(`https://panalsbackend-production.up.railway.app/api/rides/${rideId}/logs`);
+    const res = await axios.get(`https://panalsbackend.onrender.com/api/rides/${rideId}/logs`);
     return res.data;
   },
 };
@@ -190,7 +190,7 @@ const RideCard = ({ ride, onTrack, onChat, getStatusBadge, onClick }) => {
           <div className="flex gap-2">
             {ride.status === "ongoing" && (
               <button
-                className="flex-1 md:flex-none rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+                className="flex-1 md:flex-none rounded-lg bg-orange-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-orange-700"
                 onClick={() => onTrack(ride)}
               >
                 Track
@@ -278,7 +278,7 @@ const TrackingModal = ({ isOpen, onClose, ride, activeTab, onTabChange, getStatu
             {ride.status === "ongoing" && (
               <div className="flex gap-3">
                 <button
-                  className="flex-1 md:flex-none rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+                  className="flex-1 md:flex-none rounded-lg bg-orange-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-orange-700"
                   onClick={() => onStatusChange(ride.id, "completed")}
                 >
                   Complete
@@ -334,7 +334,7 @@ const TrackingModal = ({ isOpen, onClose, ride, activeTab, onTabChange, getStatu
                     <div className="space-y-2">
                       <label className="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">Rider</label>
                       <div className="flex items-center gap-3">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-sm font-bold text-white">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-600 text-sm font-bold text-white">
                           {ride.riderName.charAt(0)}
                         </div>
                         <span className="text-gray-800 dark:text-white">{ride.riderName}</span>
@@ -343,7 +343,7 @@ const TrackingModal = ({ isOpen, onClose, ride, activeTab, onTabChange, getStatu
                     <div className="space-y-2">
                       <label className="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">Driver</label>
                       <div className="flex items-center gap-3">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-sm font-bold text-white">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-600 text-sm font-bold text-white">
                           {ride.driverName.charAt(0)}
                         </div>
                         <span className="text-gray-800 dark:text-white">{ride.driverName}</span>
@@ -374,15 +374,15 @@ const TrackingModal = ({ isOpen, onClose, ride, activeTab, onTabChange, getStatu
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
                     <div className="space-y-2">
                       <label className="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">Price</label>
-                      <span className="text-lg font-semibold text-emerald-400">{ride.price}</span>
+                      <span className="text-lg font-semibold text-white ml-2">{ride.price}</span>
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">Distance</label>
-                      <span className="text-gray-800 dark:text-white">{ride.distance}</span>
+                      <span className="text-gray-800 dark:text-white ml-2">{ride.distance}</span>
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-medium uppercase text-gray-500 dark:text-gray-400">Duration</label>
-                      <span className="text-gray-800 dark:text-white">{ride.duration}</span>
+                      <span className="text-gray-800 dark:text-white ml-2">{ride.duration}</span>
                     </div>
                   </div>
 
@@ -750,7 +750,7 @@ export default function RidesManagement() {
     const statusConfig = {
       completed: {
         className:
-          "inline-flex items-center gap-1 rounded-full bg-emerald-100 dark:bg-emerald-900/50 px-3 py-1 text-xs font-medium text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30",
+          "inline-flex items-center gap-1 rounded-full bg-orange-600 px-3 py-1 text-xs font-medium text-white border border-orange-600 ",
         text: "✓ Completed",
       },
       ongoing: {
@@ -828,7 +828,7 @@ export default function RidesManagement() {
 
   const handleStatusChange = async (rideId, newStatus) => {
     try {
-      const response = await axios.put(`https://panalsbackend-production.up.railway.app/api/rides/${rideId}/status`, {
+      const response = await axios.put(`https://panalsbackend.onrender.com/api/rides/${rideId}/status`, {
         status: newStatus,
       });
 
@@ -924,7 +924,7 @@ export default function RidesManagement() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white transition-colors duration-300">
+    <div className="min-h-screen bg-black text-white transition-colors duration-300">
       <ToastContainer />
 
       {/* Page Content */}
@@ -971,8 +971,8 @@ export default function RidesManagement() {
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-black rounded-xl shadow-lg p-6 w-full max-w-md">
               <h2 className="text-xl font-bold mb-4">Trip Details</h2>
-              <p><span className="font-semibold">Driver Name:</span> {selectedRide.driver?.name || 'N/A'}</p>
-              <p><span className="font-semibold">Driver Phone:</span> {selectedRide.driver?.phone || 'N/A'}</p>
+              <p><span className="font-semibold">Driver Name:</span> {selectedRide.driver?.name || "mehul matre"}</p>
+              <p><span className="font-semibold">Driver Phone:</span> {selectedRide.driver?.phone || '+91 1236547889'}</p>
               <hr className="my-2" />
               <p><span className="font-semibold">Request Time:</span> {new Date(selectedRide.requestTime).toLocaleString()}</p>
               <p><span className="font-semibold">Accept Time:</span> {new Date(selectedRide.acceptTime).toLocaleString()}</p>

@@ -361,7 +361,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchDrivers = async () => {
       try {
-        const response = await fetch("https://panalsbackend-production.up.railway.app/api/driver")
+        const response = await fetch("https://panalsbackend.onrender.com/api/driver")
         const data = await response.json()
         if (data.success) {
           setDrivers(data.data)
@@ -377,7 +377,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchRecentRides = async () => {
       try {
-        const response = await fetch("https://panalsbackend-production.up.railway.app/api/dashboard/recent-rides")
+        const response = await fetch("https://panalsbackend.onrender.com/api/dashboard/recent-rides")
         const data = await response.json()
         setRecentRides(data)
       } catch (error) {
@@ -736,7 +736,7 @@ export default function Dashboard() {
     }
 
     console.log("Initializing socket connection...")
-    const newSocket = io("https://panalsbackend-production.up.railway.app", {
+    const newSocket = io("https://panalsbackend.onrender.com", {
       timeout: 20000,
       reconnection: true,
       reconnectionDelay: 1000,
@@ -910,7 +910,7 @@ export default function Dashboard() {
   }, [activeTab])
 
   return (
-    <div className="min-h-screen w-full bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen w-full bg-black transition-colors duration-300">
       {/* Dashboard Content */}
       <div className="p-4 md:p-6">
         <div className="flex justify-between items-center mb-4 md:mb-6">
@@ -1004,7 +1004,7 @@ export default function Dashboard() {
                         <span className="text-gray-600 dark:text-gray-400">Active</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                        <div className="w-3 h-3 rounded-full bg-orange-600"></div>
                         <span className="text-gray-600 dark:text-gray-400">Idle</span>
                       </div>
                       <div className="flex items-center gap-1">
@@ -1067,7 +1067,7 @@ export default function Dashboard() {
                                 <span
                                   className={`px-2 py-1 rounded-full text-[10px] font-medium ${
                                     driver.status === "idle"
-                                      ? "bg-green-100 text-green-800"
+                                      ? "bg-orange-600 text-white"
                                       : driver.status === "active"
                                         ? "bg-yellow-100 text-yellow-800"
                                         : driver.status === "emergency"
@@ -1142,7 +1142,7 @@ export default function Dashboard() {
                           selectedDriver?._id === driver._id
                             ? "border-blue-500 shadow-sm"
                             : "border-gray-200 dark:border-gray-700"
-                        } ${driver.status === "idle" ? "hover:border-green-300" : "opacity-75"}`}
+                        } ${driver.status === "idle" ? "hover:border-white" : "opacity-75"}`}
                         onClick={() => handleDriverSelect(driver)}
                       >
                         <div className="flex items-start justify-between mb-2">
@@ -1150,7 +1150,7 @@ export default function Dashboard() {
                             <div
                               className={`w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-semibold ${
                                 driver.status === "idle"
-                                  ? "bg-green-500"
+                                  ? "bg-orange-600"
                                   : driver.status === "active"
                                     ? "bg-yellow-500"
                                     : driver.status === "emergency"
@@ -1176,7 +1176,7 @@ export default function Dashboard() {
                           <span
                             className={`px-1.5 py-0.5 rounded-full text-[10px] font-medium ${
                               driver.status === "idle"
-                                ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                                ? "bg-orange-600 text-white"
                                 : driver.status === "active"
                                   ? "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
                                   : driver.status === "emergency"
@@ -1260,7 +1260,7 @@ export default function Dashboard() {
             <div
               className={`rounded-xl shadow-md p-4 md:p-6 hover:shadow-lg dark:hover:shadow-2xl dark:hover:-translate-y-1 transition-all duration-300 ${
                 stats.ridesPercentageChange >= 0
-                  ? "bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
+                  ? "bg-green-50 dark:bg-green-900/20 border border-orange-200 dark:border-orange-600"
                   : "bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
               }`}
             >
@@ -1270,7 +1270,7 @@ export default function Dashboard() {
                   <h3
                     className={`text-xl md:text-2xl font-bold ${
                       stats.ridesPercentageChange >= 0
-                        ? "text-green-800 dark:text-green-200"
+                        ? "text-white"
                         : "text-red-800 dark:text-red-200"
                     }`}
                   >
@@ -1279,14 +1279,14 @@ export default function Dashboard() {
                 </div>
                 <div
                   className={`p-2 md:p-3 rounded-full ${
-                    stats.ridesPercentageChange >= 0 ? "bg-green-100 dark:bg-green-900" : "bg-red-100 dark:bg-red-900"
+                    stats.ridesPercentageChange >= 0 ? "bg-orange-600" : "bg-red-100 dark:bg-red-900"
                   }`}
                 >
                   <FaCar
                     className={`text-lg md:text-xl ${
                       stats.ridesPercentageChange >= 0
-                        ? "text-green-500 dark:text-green-300"
-                        : "text-red-500 dark:text-red-300"
+                        ? "text-white"
+                        : "text-white"
                     }`}
                   />
                 </div>
@@ -1325,8 +1325,8 @@ export default function Dashboard() {
                   <p className="text-gray-500 dark:text-gray-400 text-sm">Total Drivers</p>
                   <h3 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-white">{stats.totalDrivers}</h3>
                 </div>
-                <div className="p-2 md:p-3 bg-green-100 dark:bg-green-900 rounded-full">
-                  <FaUserAlt className="text-green-500 dark:text-green-300 text-lg md:text-xl" />
+                <div className="p-2 md:p-3 bg-orange-600  rounded-full">
+                  <FaUserAlt className="text-white text-lg md:text-xl" />
                 </div>
               </div>
               <div className="mt-2 md:mt-4 flex items-center text-xs md:text-sm text-green-600 dark:text-green-400">
@@ -1342,8 +1342,8 @@ export default function Dashboard() {
             <div
               className={`rounded-xl shadow-md p-4 md:p-6 hover:shadow-lg dark:hover:shadow-2xl dark:hover:-translate-y-1 transition-all duration-300 ${
                 stats.incomePercentageChange >= 0
-                  ? "bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800"
-                  : "bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800"
+                  ? "bg-green-50 dark:bg-green-900/20 border border-orange-200 dark:border-orange-600"
+                  : "bg-red-50 dark:bg-red-900/20 border ber-red-200 dark:border-red-800"
               }`}
             >
               <div className="flex items-center justify-between">
@@ -1352,7 +1352,7 @@ export default function Dashboard() {
                   <h3
                     className={`text-xl md:text-2xl font-bold ${
                       stats.incomePercentageChange >= 0
-                        ? "text-green-800 dark:text-green-200"
+                        ? "text-white"
                         : "text-red-800 dark:text-red-200"
                     }`}
                   >
@@ -1361,13 +1361,13 @@ export default function Dashboard() {
                 </div>
                 <div
                   className={`p-2 md:p-3 rounded-full ${
-                    stats.incomePercentageChange >= 0 ? "bg-green-100 dark:bg-green-900" : "bg-red-100 dark:bg-red-900"
+                    stats.incomePercentageChange >= 0 ? "bg-orange-600 " : "bg-red-100 dark:bg-red-900"
                   }`}
                 >
                   <FaRupeeSign
                     className={`text-lg md:text-xl ${
                       stats.incomePercentageChange >= 0
-                        ? "text-green-500 dark:text-green-300"
+                        ? "text-white"
                         : "text-red-500 dark:text-red-300"
                     }`}
                   />
@@ -1409,8 +1409,8 @@ export default function Dashboard() {
                     {stats.completedRides}
                   </h3>
                 </div>
-                <div className="p-2 md:p-3 bg-green-100 dark:bg-green-900 rounded-full">
-                  <FaCar className="text-green-500 dark:text-green-300 text-lg md:text-xl" />
+                <div className="p-2 md:p-3 bg-orange-600  rounded-full">
+                  <FaCar className="text-white text-lg md:text-xl" />
                 </div>
               </div>
               <div className="mt-2 md:mt-4 flex items-center text-xs md:text-sm text-green-600 dark:text-green-400">
@@ -1632,7 +1632,7 @@ export default function Dashboard() {
                       <span
                         className={`text-xs px-1.5 py-0.5 rounded-full ${
                           Number(summaryStats.todayVsYesterday.change.rides) >= 0
-                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                            ? "bg-orange-600 text-white"
                             : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                         }`}
                       >
@@ -1650,7 +1650,7 @@ export default function Dashboard() {
                       <span
                         className={`text-xs px-1.5 py-0.5 rounded-full ${
                           Number(summaryStats.todayVsYesterday.change.revenue) >= 0
-                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                            ? "bg-orange-600 text-white"
                             : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                         }`}
                       >
@@ -1677,7 +1677,7 @@ export default function Dashboard() {
                       <span
                         className={`text-xs px-1.5 py-0.5 rounded-full ${
                           Number(summaryStats.todayVsSameLastWeek.change.rides) >= 0
-                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                            ? "bg-orange-600 text-white"
                             : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                         }`}
                       >
@@ -1695,7 +1695,7 @@ export default function Dashboard() {
                       <span
                         className={`text-xs px-1.5 py-0.5 rounded-full ${
                           Number(summaryStats.todayVsSameLastWeek.change.revenue) >= 0
-                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                            ? "bg-orange-600 text-white"
                             : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                         }`}
                       >
@@ -1720,7 +1720,7 @@ export default function Dashboard() {
                       <span
                         className={`text-xs px-1.5 py-0.5 rounded-full ${
                           Number(summaryStats.thisWeekVsLastWeek.change.rides) >= 0
-                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                            ? "bg-orange-600 text-white"
                             : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                         }`}
                       >
@@ -1738,7 +1738,7 @@ export default function Dashboard() {
                       <span
                         className={`text-xs px-1.5 py-0.5 rounded-full ${
                           Number(summaryStats.thisWeekVsLastWeek.change.revenue) >= 0
-                            ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
+                            ? "bg-orange-600 text-white"
                             : "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
                         }`}
                       >

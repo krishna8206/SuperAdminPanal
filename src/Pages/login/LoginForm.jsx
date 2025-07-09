@@ -67,7 +67,7 @@ export default function LoginInterface() {
         throw new Error("Email must end with @gmail.com")
       }
 
-      const response = await axios.post("https://panalsbackend-production.up.railway.app/api/auth/send-otp", {
+      const response = await axios.post("https://idharudhar-backend-2.onrender.com/api/auth/login", {
         email: email,
       })
 
@@ -101,7 +101,7 @@ export default function LoginInterface() {
       // Combine OTP digits into single string
       const otpCode = otp.join("")
 
-      const response = await axios.post("https://panalsbackend-production.up.railway.app/api/auth/verify-otp", {
+      const response = await axios.post("https://idharudhar-backend-2.onrender.com/api/auth/verify-otp", {
         email: email,
         otp: otpCode,
       })
@@ -139,7 +139,7 @@ export default function LoginInterface() {
     setError("")
 
     try {
-      await axios.post("https://panalsbackend-production.up.railway.app/api/auth/send-otp", {
+      await axios.post("https://idharudhar-backend-2.onrender.com/api/auth/login", {
         email: email,
       })
 
@@ -160,10 +160,10 @@ export default function LoginInterface() {
 
   // Floating animation items configuration
   const floatingItems = [
-    { icon: Car, color: "text-green-400", delay: 0, x: 80, y: 100 },
-    { icon: Bike, color: "text-green-400", delay: 0.5, x: 200, y: 60 },
-    { icon: Truck, color: "text-green-400", delay: 1, x: 120, y: 200 },
-    { icon: MapPin, color: "text-green-400", delay: 1.5, x: 250, y: 150 },
+    { icon: Car, color: "text-orange-600", delay: 0, x: 80, y: 100 },
+    { icon: Bike, color: "text-orange-600", delay: 0.5, x: 200, y: 60 },
+    { icon: Truck, color: "text-orange-600", delay: 1, x: 120, y: 200 },
+    { icon: MapPin, color: "text-orange-600", delay: 1.5, x: 250, y: 150 },
   ]
 
   // If already logged in, don't show login interface
@@ -201,7 +201,7 @@ export default function LoginInterface() {
                     repeatDelay: 3,
                   }}
                 >
-                  <div className="bg-gray-700/80 backdrop-blur-sm rounded-2xl p-4 shadow-lg hover:bg-green-700/50 transition-colors duration-300">
+                  <div className="bg-orange-600 backdrop-blur-sm rounded-2xl p-4 shadow-lg hover:bg-orange-700 transition-colors duration-300">
                     <item.icon className={`w-8 h-8 ${item.color}`} />
                   </div>
                 </motion.div>
@@ -238,7 +238,7 @@ export default function LoginInterface() {
             {/* Marketing content */}
             <div className="relative z-10 h-full flex flex-col justify-center">
               <div className="text-center lg:text-left">
-                <div className="inline-flex items-center justify-center w-20 h-20 bg-green-700 rounded-2xl mb-8">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-orange-600 rounded-2xl mb-8">
                   <Car className="w-10 h-10 text-white" />
                 </div>
 

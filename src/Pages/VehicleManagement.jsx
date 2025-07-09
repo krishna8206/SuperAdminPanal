@@ -9,7 +9,7 @@ import { GiCargoCrate } from "react-icons/gi"
 import socket from "../utils/socket"
 
 // Configure axios defaults
-const API_BASE_URL = process.env.REACT_APP_API_URL || "https://panalsbackend-production.up.railway.app/api"
+const API_BASE_URL = process.env.REACT_APP_API_URL || "https://panalsbackend.onrender.com/api"
 const api = axios.create({
   baseURL: API_BASE_URL,
   timeout: 10000,
@@ -56,7 +56,7 @@ export default function VehicleManagement() {
       return true
     } catch (error) {
       console.error("❌ Server connection test failed:", error)
-      setErrorMessage("Cannot connect to server. Please check if the server is running on https://panalsbackend-production.up.railway.app")
+      setErrorMessage("Cannot connect to server. Please check if the server is running on https://panalsbackend.onrender.com")
       return false
     }
   }, [])
@@ -570,7 +570,7 @@ handleManualReconnect();
       case "Car":
         return <MdDirectionsCar className="text-blue-500 text-xl" />
       case "Bike":
-        return <MdTwoWheeler className="text-green-500 text-xl" />
+        return <MdTwoWheeler className="text-orange-600 text-xl" />
       case "Electric vehicle":
         return <MdElectricCar className="text-purple-500 text-xl" />
       case "Truck":
@@ -793,7 +793,7 @@ handleManualReconnect();
   )
 
   return (
-    <div className="h-[90vh] w-full bg-gray-100 dark:bg-gray-900 flex flex-col overflow-y-scroll">
+    <div className="h-[90vh] w-full bg-black text-white flex flex-col overflow-y-scroll">
       <div className="flex-1 flex flex-col p-4">
         {/* Enhanced Connection Status */}
         <div className="mb-2 flex items-center justify-between">
@@ -875,7 +875,7 @@ handleManualReconnect();
               </button>
               <button
                 onClick={handleAddVehicle}
-                className="flex items-center gap-2 px-3 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors"
+                className="flex items-center gap-2 px-3 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors"
               >
                 <FaPlus /> Add Vehicle
               </button>
@@ -997,7 +997,7 @@ handleManualReconnect();
               <p>No vehicles found matching your criteria</p>
               <button
                 onClick={handleAddVehicle}
-                className="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600"
+                className="mt-4 px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700"
               >
                 Add Your First Vehicle
               </button>
@@ -1063,7 +1063,7 @@ handleManualReconnect();
                     <div className="flex gap-2">
                       <button
                         onClick={() => handleViewVehicle(vehicle)}
-                        className="p-2 text-gray-500 dark:text-gray-400 hover:text-green-500 dark:hover:text-green-400"
+                        className="p-2 text-gray-500 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-700"
                         title="View Details"
                       >
                         <FaEye />
@@ -1311,7 +1311,7 @@ handleManualReconnect();
                 <button
                   onClick={handleSubmitVehicle}
                   disabled={isSubmitting}
-                  className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? "Saving..." : editMode ? "Update Vehicle" : "Add Vehicle"}
                 </button>
