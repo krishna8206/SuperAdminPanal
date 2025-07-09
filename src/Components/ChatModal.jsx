@@ -36,7 +36,7 @@ export const ChatModal = ({
         {/* Chat Header - Very Compact */}
         <div className="flex items-center justify-between border-b border-gray-200 dark:border-gray-700 px-4 py-2 bg-white dark:bg-gray-800">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-600 text-white text-sm font-bold">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-600 text-white text-sm font-bold">
               💬
             </div>
             <div>
@@ -69,7 +69,7 @@ export const ChatModal = ({
               <span className="text-gray-700 dark:text-gray-200 truncate">{ride.drop}</span>
             </div>
             <div className="flex items-center justify-between pt-1">
-              <span className="font-bold text-emerald-600 dark:text-emerald-400">{ride.price}</span>
+              <span className="font-bold text-white">₹ {ride.price}</span>
               <span className="text-gray-600 dark:text-gray-300">{ride.time}</span>
             </div>
           </div>
@@ -87,7 +87,7 @@ export const ChatModal = ({
                       <div
                         className={`rounded-2xl px-3 py-2 shadow-sm ${
                           msg.sender === "admin"
-                            ? "bg-emerald-600 text-white rounded-br-md"
+                            ? "bg-orange-600 text-white rounded-br-md"
                             : "bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 border border-gray-200 dark:border-gray-600 rounded-bl-md"
                         }`}
                       >
@@ -138,7 +138,7 @@ export const ChatModal = ({
             {cannedMessages.slice(0, 4).map((msg, index) => (
               <button
                 key={index}
-                className="text-left rounded-md border border-gray-200 dark:border-gray-600 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 transition-all hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:border-emerald-300 dark:hover:border-emerald-600 hover:text-emerald-700 dark:hover:text-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 truncate"
+                className="text-left rounded-md border border-gray-200 dark:border-gray-600 px-2 py-1 text-xs text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 transition-all focus:outline-none focus:ring-1 focus:ring-white truncate"
                 onClick={() => onChatMessageChange(msg)}
                 title={msg}
               >
@@ -162,12 +162,12 @@ export const ChatModal = ({
                 }
               }}
               rows={1}
-              className="flex-1 resize-none rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 px-3 py-2 text-sm text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:border-emerald-500 dark:focus:border-emerald-400 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-all max-h-20 overflow-y-auto"
+              className="flex-1 resize-none rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 px-3 py-2 text-sm text-gray-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:border-white dark:focus:border-white focus:outline-none focus:ring-1 focus:ring-white transition-all max-h-20 overflow-y-auto"
             />
             <button
               onClick={onSendMessage}
               disabled={!chatMessage.trim()}
-              className="rounded-lg bg-emerald-600 px-3 py-2 text-white transition-all hover:bg-emerald-700 focus:outline-none focus:ring-1 focus:ring-emerald-500 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
+              className="rounded-lg bg-orange-600 px-3 py-2 text-white transition-all hover:bg-orange-700 focus:outline-none focus:ring-1 focus:ring-white disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
