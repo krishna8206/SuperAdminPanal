@@ -174,11 +174,11 @@ export default function LoginInterface() {
   }, [])
 
   return (
-    <div className="cover h-[100vh] w-full bg-gray-900 flex justify-center items-center overflow-y-scroll48">
-      <div className="w-[70%] mx-auto bg-gray-900 rounded-lg shadow-2xl">
+    <div className="cover h-[100vh] w-full bg-black flex justify-center items-center overflow-y-scroll48">
+      <div className="w-[70%] mx-auto bg-black rounded-lg shadow-2xl">
         <div className="flex flex-col lg:flex-row min-h-[600px] rounded-lg">
           {/* Left Panel - Visual/Animation Section */}
-          <div className="flex-1 bg-gray-800 relative overflow-hidden p-8 lg:p-12">
+          <div className="flex-1 bg-black relative overflow-hidden p-8 lg:p-12">
             <div className="absolute inset-0">
               {/* Render floating animated icons */}
               {floatingItems.map((item, index) => (
@@ -271,7 +271,7 @@ export default function LoginInterface() {
           </div>
 
           {/* Right Panel - Login Form */}
-          <div className="flex-1 p-8 lg:p-12 flex items-center justify-center bg-gray-900">
+          <div className="flex-1 p-8 lg:p-12 flex items-center justify-center bg-black">
             <div className="w-full max-w-md">
               {/* Error message display */}
               {error && (
@@ -324,7 +324,7 @@ export default function LoginInterface() {
                         <Button
                           type="submit"
                           disabled={isLoading}
-                          className="w-full h-12 bg-green-700 hover:bg-green-600 text-white font-semibold rounded-xl transition-colors relative overflow-hidden group"
+                          className="w-full h-12 bg-orange-600 hover:bg-orange-700 text-white font-semibold rounded-xl transition-colors relative overflow-hidden group"
                         >
                           {isLoading ? (
                             <>
@@ -375,8 +375,8 @@ export default function LoginInterface() {
                     </button>
 
                     <div className="text-center mb-8">
-                      <div className="w-16 h-16 bg-green-700/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                        <Mail className="w-8 h-8 text-green-400" />
+                      <div className="w-16 h-16 bg-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <Mail className="w-8 h-8 text-white" />
                       </div>
                       <h2 className="text-3xl font-bold text-white mb-2 font-sans">Check Your Email</h2>
                       <p className="text-gray-400 mb-2">We've sent a 6-digit code to</p>
